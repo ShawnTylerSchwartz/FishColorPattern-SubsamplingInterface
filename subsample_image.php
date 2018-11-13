@@ -9,6 +9,18 @@
 		<!-- <img src="<?php echo $current_image; ?>" /> -->
 
 		<br /><br />
+
+		<div id="page">
+  <div id="demo-basic">
+  </div>
+</div>
+
+<form action="test-image.php" id="form" method="post">
+<div id="upload-demo"></div>
+<input type="hidden" id="imagebase64" name="imagebase64">
+<a href="#" class="upload-result">Send</a>
+</form>
+<button class="vanilla-rotate" data-deg="-90">Rotate</button>
 		
 		<canvas id="myCanvas" width="100px" height="100px"></canvas>
 		<div class='clickable' id='clicker'>
@@ -18,6 +30,50 @@
 		<!-- <input type="button" id="btnSave" value="Save PNG"/> -->
 
 		<div id="img-out"></div>
+
+		<script>
+			$(function() {
+  var basic = $('#demo-basic').croppie({
+    viewport: {
+      width: 150,
+      height: 200
+    }
+  });
+  basic.croppie('bind', {
+    url: 'https://i.imgur.com/xD9rzSt.jpg',
+    points: [77, 469, 280, 739]
+  });
+});
+
+$( document ).ready(function() {
+    var $uploadCrop = $('#upload-demo');
+        $uploadCrop.croppie({
+            viewport: {
+                width: 250,
+                height: 250,
+                type: 'square'
+            },
+            boundary: {
+                width: 300,
+                height: 300
+            }
+        });
+        $uploadCrop.croppie('bind', 'imgs/cat.jpg');
+        $('.vanilla-rotate').on('click', function(ev) {
+            vanilla.rotate(parseInt($(this).data('deg')));
+        });
+    $('.upload-result').on('click', function (ev) {
+        $uploadCrop.croppie('result', {
+            type: 'canvas',
+            size: 'original'
+        }).then(function (resp) {
+            $('#imagebase64').val(resp);
+            $('#form').submit();
+        });
+    });
+});
+
+		</script>
 		
 				
 		<script>

@@ -25,6 +25,12 @@
 
 		<script src="assets/js/html2canvas.min.js"></script>
 
+		<link rel="stylesheet" href="assets/css/croppie.css" />
+		<script src="assets/js/croppie.js"></script>
+
+		<link rel="Stylesheet" type="text/css" href="http://foliotek.github.io/Croppie/croppie.css" />
+  <link rel="Stylesheet" type="text/css" href="http://t4t5.github.io/sweetalert/dist/sweetalert.css" />
+
 		<style>
 			.clickable {
 			    /*border: 1px solid #333;*/
@@ -47,6 +53,21 @@
 			    top: -5%; margin-top: -8px;
 			    font-weight: bold;
 			}
+
+			#page {
+  background: #FFF;
+  padding: 20px;
+  margin: 20px;
+}
+
+#demo-basic {
+  width: 200px;
+  height: 300px;
+}
+.actions {
+  width: 300px;
+  margin: 0 auto;
+}
 		</style>
 
 	</head>

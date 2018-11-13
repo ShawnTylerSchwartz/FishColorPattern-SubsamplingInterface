@@ -15,21 +15,8 @@
   </div>
 </div>
 
-<form action="test-image.php" id="form" method="post">
-<div id="upload-demo"></div>
-<input type="hidden" id="imagebase64" name="imagebase64">
-<a href="#" class="upload-result">Send</a>
-</form>
-<button class="vanilla-rotate" data-deg="-90">Rotate</button>
-		
-		<canvas id="myCanvas" width="100px" height="100px"></canvas>
-		<div class='clickable' id='clicker'>
-			<span class='display'></span>
-		</div>
+<a class="button" onClick="buttonClicked()">Save</a>
 
-		<!-- <input type="button" id="btnSave" value="Save PNG"/> -->
-
-		<div id="img-out"></div>
 
 		<script>
 			$(function() {
@@ -49,8 +36,8 @@ $( document ).ready(function() {
     var $uploadCrop = $('#upload-demo');
         $uploadCrop.croppie({
             viewport: {
-                width: 250,
-                height: 250,
+                width: 200,
+                height: 200,
                 type: 'square'
             },
             boundary: {
@@ -74,6 +61,31 @@ $( document ).ready(function() {
 });
 
 		</script>
+
+		
+
+<form action="test-image.php" id="form" method="post">
+<div id="upload-demo"></div>
+<input type="hidden" id="imagebase64" name="imagebase64">
+<a href="#" class="upload-result">Send</a>
+</form>
+<button class="vanilla-rotate" data-deg="-90">Rotate</button>
+		
+		<canvas id="myCanvas" width="100px" height="100px"></canvas>
+		<div class='clickable' id='clicker'>
+			<span class='display'></span>
+		</div>
+
+		<!-- <input type="button" id="btnSave" value="Save PNG"/> -->
+
+		<div id="img-out"></div>
+
+<div id="yoyo">
+			<h3>I like dogs.</h3>
+		</div>
+<button id="photoSignBtn">Clickme</button>
+
+
 		
 				
 		<script>
@@ -133,6 +145,8 @@ $( document ).ready(function() {
 				console.log("y2: " + ClickTwo_y);
 
 				$display.text('Click2: ' + 'x: ' + ClickTwo_x + ', y: ' + ClickTwo_y);
+
+
 			} 
 			// else if (clickCounter == 2) {
 			// 	var $div = $(ev.target);
@@ -212,10 +226,13 @@ $( document ).ready(function() {
 				console.log("NewSquareX: " + newSquare_x);
 				console.log("NewSquareY: " + newSquare_y);
 
-				
+				html2canvas($("#clicker")[0]).then(function(canvas) {
+$("#img-out").append(canvas);
+});
 
 				//clickable.style.display = 'none';
 			}
+
 
 			// if ((clickCounter > 3) && (clickCounter < 5)) {
 			// 	var top_bottom_diffs_x = (Click_TopCorner_x - Click_BottomCorner_x);
@@ -266,6 +283,28 @@ $( document ).ready(function() {
 
 		</script>
 
+<script type="text/javascript">
+function buttonClicked() {
+    document.getElementById('img-out').scrollIntoView();
+    html2canvas(document.querySelector("#img-out"), {
+        logging: true,
+        allowTaint: true,
+        canvas: canvas
+    }).then(function(canvas) {
+        var dataImage = canvas.toDataURL("image/png");
+        $.ajax({
+            type: "POST",
+            url: "https://psych.shawntylerschwartz.com/fish-samples/save.php",
+            data: { 
+                data:dataImage
+            }
+        }).done(function(fileName) {
+                window.open("https://psych.shawntylerschwartz.com/fish-samples/" + fileName.replace(/['"]+/g, ''));
+
+        }); 
+    });
+}
+  </script> 
 		</main>
 	</body>
 </html>

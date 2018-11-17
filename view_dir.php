@@ -33,32 +33,35 @@
 	$numCompleted = 0;
 
 	foreach ($images as $image) {
-		$totalNumImgs = count($images);
-		
+
+       	if (in_array($image, $tmpstorage)) {
+       		echo "<div class='list-group'>";
+ 				echo "<a href='scale_fish.php?image=" . $image . "' class='list-group-item list-group-item-action list-group-item-success'>" . $image . "</a><div style='margin-bottom: 10px;'></div></li>";
+ 			echo "</div>";
+ 				$numCompleted++;
+ 		} else {
+ 			echo "<div class='list-group'>";
+ 				echo "<a href='scale_fish.php?image=" . $image . "' class='list-group-item list-group-item-action list-group-item-danger'>" . $image . "</a><div style='margin-bottom: 10px;'></div></li>";
+ 				echo "</div>";
+ 		}
+
+ 		$totalNumImgs = count($images);
+
 		if ($numCompleted != 0) {
-			$percentCompleted = (($numCompleted+1) / $totalNumImgs) * 100;
-			$numRemaining = $totalNumImgs - ($numCompleted+1);
+			$percentCompleted = (($numCompleted) / $totalNumImgs) * 100;
+			$numRemaining = $totalNumImgs - ($numCompleted);
 		} else {
 			$percentCompleted = 0;
 			$numRemaining = $totalNumImgs - ($numCompleted);
 		}
 
-       	if (in_array($image, $tmpstorage)) {
-       		echo "<div class='list-group'>";
- 				echo "<a href='subsample_image.php?image=" . $image . "' class='list-group-item list-group-item-action list-group-item-success'>" . $image . "</a></li>";
- 			echo "</div>";
- 				$numCompleted++;
- 		} else {
- 			echo "<div class='list-group'>";
- 				echo "<a href='subsample_image.php?image=" . $image . "' class='list-group-item list-group-item-action list-group-item-danger'>" . $image . "</a></li>";
- 				echo "</div>";
- 		}
 	}
 
 	echo "<div class='progress' style='height: 35px; margin-top: 25px;'>";
 		echo "<div class='progress-bar' role='progressbar' style='font-size: 16px; font-weight: bolder; width: $percentCompleted%;'>$percentCompleted %</div>";
 	echo "</div>";
-	echo "<p class='lead'><em>Current progress...percentage of fishes scaled and cropped.</em></p><br /><br /><br />";
+	echo "<p class='lead'><em>Current progress...percentage of fishes scaled and cropped.</em></p>";
+	echo "<a href='index.php'><button type='button' class='btn btn-secondary'><i class='far fa-arrow-alt-circle-left'></i> Go Back</button></a><br /><br />";
 ?>
 
 <?php include 'snippets/footer.php'; ?>

@@ -57,42 +57,40 @@
 		$numCompleted = 0;
 
 		foreach ($images as $image) {
-			$totalNumImgs = count($images);
-			
-			if ($numCompleted != 0) {
-				$percentCompleted = (($numCompleted+1) / $totalNumImgs) * 100;
-				$numRemaining = $totalNumImgs - ($numCompleted+1);
-			} else {
-				$percentCompleted = 0;
-				$numRemaining = $totalNumImgs - ($numCompleted);
-			}
-			
-
 			if (in_array($image, $tmpstorage)) {
 				$numCompleted++;
 			} else {
 				break;
 			}
+
+			$totalNumImgs = count($images);
+			// printf($totalNumImgs);
+
+			$percentCompleted = (($numCompleted+1) / $totalNumImgs) * 100;
+			$numRemaining = $totalNumImgs - ($numCompleted);
+			
+			if ($numCompleted != 0) {
+				$percentCompleted = (($numCompleted) / $totalNumImgs) * 100;
+				$numRemaining = $totalNumImgs - ($numCompleted);
+			} else {
+				$percentCompleted = 0;
+				$numRemaining = $totalNumImgs - ($numCompleted);
+			}
 		}
 
-		//printf($numCompleted);
-		//printf($numRemaining);
-		//printf($percentCompleted);
+		// printf($numCompleted);
+		// printf($numRemaining);
+		// printf($percentCompleted);
 
 		echo "<ul class='list-group'>";
   			echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
     			echo "<a href='view_dir.php?dir=" . $dir . "'>" . $dir . "</a>";
-    			if($numRemaining == 0) {echo "<span class='badge badge-success badge-pill'><i class='fas fa-star'></i> $numRemaining</span>";} else { echo "<span class='badge badge-danger badge-pill'><i class='fas fa-star-half-alt'></i> $numRemaining</span>"; }
-    			if($percentCompleted == 100) { echo "<span class='badge badge-success badge-pill'>$percentCompleted%</span>"; } else { echo "<span class='badge badge-primary badge-pill'>$percentCompleted%</span>"; }
+    			/*if($numRemaining == 0) {echo "<span class='badge badge-success badge-pill'><i class='fas fa-star'></i> $numRemaining</span>";} else { echo "<span class='badge badge-danger badge-pill'><i class='fas fa-star-half-alt'></i> $numRemaining</span>"; }
+    			if($percentCompleted == 100) { echo "<span class='badge badge-success badge-pill'>$percentCompleted%</span>"; } else { echo "<span class='badge badge-primary badge-pill'>$percentCompleted%</span>"; }*/
   			echo "</li>";
+  			echo "<div style='margin-bottom: 10px;'></div>";
 		echo "</ul>";
 
-/*
- 		echo "<div class='list-group'>";
- 				echo "<a href='view_dir.php?dir=" . $dir . "' class='list-group-item list-group-item-action'>" . $dir . "</a></li>";
- 				echo "<span class='badge badge-primary badge-pill'>14</span>";
- 		echo "</div>";
- 		*/
 
  	}
 ?>

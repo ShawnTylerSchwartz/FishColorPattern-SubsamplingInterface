@@ -1,5 +1,5 @@
 <?php 
-	header("refresh: 0.1; url=index.php"); // really should be a fully qualified URI
+	header("refresh: 0.1; url=index.php");
 	echo '<script type="text/javascript">alert("Fish subsample has been successfully saved! Resetting interface...");</script>';
 	
 	include 'snippets/header.php';
@@ -22,7 +22,7 @@
 
 		$final = imagecreatetruecolor($targ_w, $targ_h);
 
-		imagecopyresampled($final,$dst_r,0,0,$_POST['x'],$_POST['y'],$targ_w,$targ_h,$_POST['w'],$_POST['h']);
+		imagecopyresampled($final, $dst_r, 0, 0, $_POST['x'], $_POST['y'], $targ_w, $targ_h, $_POST['w'], $_POST['h']);
 
 		// header('Content-type: image/jpeg');	
 

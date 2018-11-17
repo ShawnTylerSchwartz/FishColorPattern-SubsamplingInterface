@@ -7,9 +7,9 @@
 	$scaled_height = $_GET['sheight'];
 ?>
 
-	<p class="lead">You are currently cropping <strong><em><?php echo $current_image; ?></em></strong>
+	<p class="lead">You are currently cropping <span class="small"><strong><em><?php echo $current_image; ?></em></strong></span>
 		<br />
-		<em>New Scaled Dimensions: <?php echo round($scaled_width); ?> x <?php echo round($scaled_height); ?></em>
+		<em>New Scaled Dimensions: <mark><?php echo round($scaled_width); ?> x <?php echo round($scaled_height); ?></mark></em>
 	</p>
 
 	<script>
@@ -74,10 +74,12 @@
 	</script>
 	<img src="<?php echo $current_image; ?>" id="cropbox" width="<?php echo $scaled_width; ?>" height="<?php echo $scaled_height; ?>" />
 	<br />
-	<form action="execute_crop.php?image=<?php echo $current_image; ?>&swidth=<?php echo $scaled_width; ?>&sheight=<?php echo $scaled_height; ?>" method="post" target="_blank" onsubmit="return checkCoords();">
+	<form action="execute_crop.php?image=<?php echo $current_image; ?>&swidth=<?php echo $scaled_width; ?>&sheight=<?php echo $scaled_height; ?>" method="post" onsubmit="return checkCoords();">
 		<input type="hidden" id="x" name="x" />
 		<input type="hidden" id="y" name="y" />
 		<input type="hidden" id="w" name="w" />
 		<input type="hidden" id="h" name="h" />
-		<input type="submit" value="Subsample Fish &raquo;" class="btn btn-primary btn-lg" />
+		<button type="submit" class="btn btn-primary btn-lg">
+    		Subsample Fish <i class='fas fa-upload'></i>
+		</button>
 	</form>

@@ -5,7 +5,13 @@
 	$current_image = $_GET['image'];
 ?>
 
-	<p class="lead">You are currently subsampling <strong><em><?php echo $current_image; ?></em></strong></p>
+	<p class="lead">You are currently rescaling <span class="small"><strong><em><?php echo $current_image; ?></em></strong></span>
+		<br />
+		<span style="margin-left: 15px;"></span> (1) Use your mouse to click on the <em>tip of the snout</em>.<br />
+		<span style="margin-left: 15px;"></span> (2) Make a second click at the <em>posterior end of the midlateral portion of the hypural plate</em>.<br />
+		See <a href="instructions.php" target="_blank">instructions here</a> for a schematic outlining the <strong>Standard Length (SL)</strong> measurement.<br />
+		<em>Once you have made both clicks, the fish image will automatically rescale to have a <strong>SL</strong> of 1000px. Click <mark><strong>Subsample Fish Pattern <i class="far fa-arrow-alt-circle-right"></i></strong></mark> to continue.</em>
+	</p>
 
 	<p></p>
 	<div id="cropButton"></div>
@@ -92,7 +98,7 @@
   					clickable.style.display = 'none';
 				});	
 				
-				document.getElementById("cropButton").innerHTML+= "<a href='crop_image.php?image=<?php echo $current_image; ?>&swidth=" + newScaledWidth + "&sheight=" + newScaledHeight + "'class='btn btn-primary btn-lg' role='button'>Crop Image &raquo;</a>";			
+				document.getElementById("cropButton").innerHTML+= "<a href='crop_fish.php?image=<?php echo $current_image; ?>&swidth=" + newScaledWidth + "&sheight=" + newScaledHeight + "'class='btn btn-primary btn-lg' role='button'>Subsample Fish Pattern <i class='far fa-arrow-alt-circle-right'></i></a>";			
 			}		
 		});
 	</script>

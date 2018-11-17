@@ -58,8 +58,15 @@
 
 		foreach ($images as $image) {
 			$totalNumImgs = count($images);
-			$numRemaining = $totalNumImgs - ($numCompleted+1);
-			$percentCompleted = (($numCompleted+1) / $totalNumImgs) * 100;
+			
+			if ($numCompleted != 0) {
+				$percentCompleted = (($numCompleted+1) / $totalNumImgs) * 100;
+				$numRemaining = $totalNumImgs - ($numCompleted+1);
+			} else {
+				$percentCompleted = 0;
+				$numRemaining = $totalNumImgs - ($numCompleted);
+			}
+			
 
 			if (in_array($image, $tmpstorage)) {
 				$numCompleted++;

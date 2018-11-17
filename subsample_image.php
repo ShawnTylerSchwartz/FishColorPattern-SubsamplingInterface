@@ -1,119 +1,35 @@
-<?php include 'subsampleheader_template.php'; ?>
+<?php 
+	include 'snippets/header.php';
+	include 'snippets/main.php';
 
-		<?php
-			$current_image = $_GET['image'];
-		?>
+	$current_image = $_GET['image'];
+?>
 
-		<p class="lead">You are currently subsampling <strong><?php echo $current_image; ?></strong></p>
+	<p class="lead">You are currently subsampling <strong><em><?php echo $current_image; ?></em></strong></p>
 
-		<!-- <img src="<?php echo $current_image; ?>" /> -->
+	<p></p>
+	<div id="cropButton"></div>
+	<p></p>
 
-		<br /><br />
+	<div class='clickable' id='clicker'>
+		<span class='display'></span>
+		<img src="<?php echo $current_image; ?>" id="fishSample" width="100%" height="100%" />
+	</div>
 
-		<div id="page">
-  <div id="demo-basic">
-  </div>
-</div>
+	<div id="img-out"></div>
 
-<a class="button" onClick="buttonClicked()">Save</a>
+	<script>
+		var Hor_ClickOne_x = 0;
+		var Hor_ClickOne_y = 0;
 
+		var Hor_ClickTwo_x = 0;
+		var Hor_ClickTwo_y = 0;
 
-		<script>
-			$(function() {
-  var basic = $('#demo-basic').croppie({
-    viewport: {
-      width: 150,
-      height: 200
-    }
-  });
-  basic.croppie('bind', {
-    url: 'https://i.imgur.com/xD9rzSt.jpg',
-    points: [77, 469, 280, 739]
-  });
-});
+		var clickCounter = 0;
 
-$( document ).ready(function() {
-    var $uploadCrop = $('#upload-demo');
-        $uploadCrop.croppie({
-            viewport: {
-                width: 200,
-                height: 200,
-                type: 'square'
-            },
-            boundary: {
-                width: 300,
-                height: 300
-            }
-        });
-        $uploadCrop.croppie('bind', 'imgs/cat.jpg');
-        $('.vanilla-rotate').on('click', function(ev) {
-            vanilla.rotate(parseInt($(this).data('deg')));
-        });
-    $('.upload-result').on('click', function (ev) {
-        $uploadCrop.croppie('result', {
-            type: 'canvas',
-            size: 'original'
-        }).then(function (resp) {
-            $('#imagebase64').val(resp);
-            $('#form').submit();
-        });
-    });
-});
-
-		</script>
-
-		
-
-<form action="test-image.php" id="form" method="post">
-<div id="upload-demo"></div>
-<input type="hidden" id="imagebase64" name="imagebase64">
-<a href="#" class="upload-result">Send</a>
-</form>
-<button class="vanilla-rotate" data-deg="-90">Rotate</button>
-		
-		<canvas id="myCanvas" width="100px" height="100px"></canvas>
-		<div class='clickable' id='clicker'>
-			<span class='display'></span>
-		</div>
-
-		<!-- <input type="button" id="btnSave" value="Save PNG"/> -->
-
-		<div id="img-out"></div>
-
-<div id="yoyo">
-			<h3>I like dogs.</h3>
-		</div>
-<button id="photoSignBtn">Clickme</button>
-
-
-		
-				
-		<script>
-			var ClickOne_x = 0;
-			var ClickOne_y = 0;
-
-			var ClickTwo_x = 0;
-			var ClickTwo_y = 0;
-
-			var Click_TopCorner_x = 0;
-			var Click_TopCorner_y = 0;
-			var Click_BottomCorner_x = 0;
-			var Click_BottomCorner_y = 0;
-
-			var SquareLocation_x = 0;
-			var SquareLocation_y = 0;
-
-
-			var clickCounter = 0;
-
-			// Tests
-			console.log("xknot: " + ClickOne_x);
-			console.log("yknot: " + ClickOne_y);
-
-			clickable = document.getElementById('clicker');
-			clickable.style.backgroundImage = "url('<?php echo $current_image; ?>')";
-			clickable.style.backgroundSize = 'contain';
-			clickable.style.backgroundRepeat = 'no-repeat';
+		clickable = document.getElementById('clicker');
+		clickable.style.backgroundSize = 'contain';
+		clickable.style.backgroundRepeat = 'no-repeat';
 
 		$('.clickable').bind('click', function (ev) {
 			
@@ -125,186 +41,58 @@ $( document ).ready(function() {
 
 				var offset = $div.offset();
 
-				ClickOne_x = ev.clientX - offset.left;
-				ClickOne_y = ev.clientY - offset.top;
+				Hor_ClickOne_x = ev.clientX - offset.left;
+				Hor_ClickOne_y = ev.clientY - offset.top;
 
-				console.log("x1: " + ClickOne_x);
-				console.log("y1: " + ClickOne_y);
-
-				$display.text('Click1: ' + 'x: ' + ClickOne_x + ', y: ' + ClickOne_y);
+				$display.text('Horizontal SL Click 1: ' + 'x: ' + Hor_ClickOne_x + ', y: ' + Hor_ClickOne_y);
 			} else if (clickCounter == 1) {
 				var $div = $(ev.target);
 				var $display = $div.find('.display');
 
 				var offset = $div.offset();
 
-				ClickTwo_x = ev.clientX - offset.left;
-				ClickTwo_y = ev.clientY - offset.top;
+				Hor_ClickTwo_x = ev.clientX - offset.left;
+				Hor_ClickTwo_y = ev.clientY - offset.top;
 
-				console.log("x2: " + ClickTwo_x);
-				console.log("y2: " + ClickTwo_y);
-
-				$display.text('Click2: ' + 'x: ' + ClickTwo_x + ', y: ' + ClickTwo_y);
-
-
-			} 
-			// else if (clickCounter == 2) {
-			// 	var $div = $(ev.target);
-			// 	var $display = $div.find('.display');
-
-			// 	var offset = $div.offset();
-
-			// 	Click_TopCorner_x = ev.clientX - offset.left;
-			// 	Click_TopCorner_y = ev.clientX - offset.top;
-
-			// 	console.log("x3: " + Click_TopCorner_x);
-			// 	console.log("y3: " + Click_TopCorner_y);
-
-			// 	$display.text('Click3: ' + 'x: ' + Click_TopCorner_x + ', y: ' + Click_TopCorner_y);
-			// } else if (clickCounter == 3) {
-			// 	var $div = $(ev.target);
-			// 	var $display = $div.find('.display');
-
-			// 	var offset = $div.offset();
-
-			// 	Click_BottomCorner_x = ev.clientX - offset.left;
-			// 	Click_BottomCorner_y = ev.clientX - offset.top;
-
-			// 	console.log("x3: " + Click_BottomCorner_x);
-			// 	console.log("y3: " + Click_BottomCorner_y);
-
-			// 	$display.text('Click4: ' + 'x: ' + Click_BottomCorner_x + ', y: ' + Click_BottomCorner_y);
-			// } 
-			else if (clickCounter == 2) {
-				var $div = $(ev.target);
-				var $display = $div.find('.display');
-
-				var offset = $div.offset();
-
-				SquareLocation_x = ev.clientX - offset.left;
-				SquareLocation_y = ev.clientX - offset.top;
-
-				console.log("xcrop: " + SquareLocation_x);
-				console.log("ycrop: " + SquareLocation_y);
-
-				$display.text('ClickCORNER: ' + 'x: ' + SquareLocation_x + ', y: ' + SquareLocation_y);
-				var squareX = SquareLocation_x;
-				var squareY = SquareLocation_y;
-				console.log("squareX: " + squareX);
-				console.log("squareY: " + squareY);
+				$display.text('Horizontal SL Click 2: ' + 'x: ' + Hor_ClickTwo_x + ', y: ' + Hor_ClickTwo_y);
 			} else {
-				console.log("All clicks have been completed.");
+				console.log("All clicks have been recorded.");
 			}
 			
 			clickCounter++;
 			if ((clickCounter > 1) && (clickCounter < 3)) {
 				// calculate distance between the two clicked points
-				var diffs_x = (ClickOne_x - ClickTwo_x);
-				var diffs_y = (ClickOne_y - ClickTwo_y);
-				var standardLength = Math.sqrt((Math.pow(diffs_y,2))+(Math.pow(diffs_x,2)));
-				console.log("Dist: " + standardLength);
+				var Hor_diffs_x = (Hor_ClickOne_x - Hor_ClickTwo_x);
+				var Hor_diffs_y = (Hor_ClickOne_y - Hor_ClickTwo_y);
+				var standardLength = Math.sqrt((Math.pow(Hor_diffs_y,2))+(Math.pow(Hor_diffs_x,2)));
+				console.log("SL: " + standardLength);
+
+				var orignalWidth = $('#clicker').width();
+				var originalHeight = $('#clicker').height();
+				console.log("Original Width: " + orignalWidth);
+				console.log("Original Height: " + originalHeight);
 
 				// calculate new scale factor
-				var preImgWidth = document.getElementById('clicker').offsetWidth;
-				console.log("PreScaled IMG Width: " + preImgWidth);
 				var desiredStandardLength = 1000;
-
 				var standardLength_ScaleFactor = desiredStandardLength / standardLength;
-				// var postImgWidth = 
-				clickable = document.getElementById('clicker');
-				clickable.style.width = (preImgWidth*standardLength_ScaleFactor) + 'px';
-
-				var newScaledWidth = preImgWidth*standardLength_ScaleFactor;
-
 				
+				var newScaledWidth = orignalWidth * standardLength_ScaleFactor;
+				var newScaledHeight = originalHeight * standardLength_ScaleFactor;
 
-				console.log("NewScaledWidth: " + newScaledWidth);
+				console.log("New Scaled Width: " + newScaledWidth);
+				console.log("New Scaled Height: " + newScaledHeight);
 
-				var newSquare_x = SquareLocation_x;
-				var newSquare_y = SquareLocation_y;
+				document.getElementById("fishSample").width = newScaledWidth;
+				document.getElementById("fishSample").height = newScaledHeight;
 
-				console.log("NewSquareX: " + newSquare_x);
-				console.log("NewSquareY: " + newSquare_y);
-
-				html2canvas($("#clicker")[0]).then(function(canvas) {
-$("#img-out").append(canvas);
-});
-
-				//clickable.style.display = 'none';
-			}
-
-
-			// if ((clickCounter > 3) && (clickCounter < 5)) {
-			// 	var top_bottom_diffs_x = (Click_TopCorner_x - Click_BottomCorner_x);
-			// 	var top_bottom_diffs_y = (Click_TopCorner_y - Click_BottomCorner_y);
-			// 	var newScaledHeight = Math.sqrt((Math.pow(top_bottom_diffs_y,2))+(Math.pow(top_bottom_diffs_x,2)));
-
-			// 	console.log("NewScaledHeight: " + newScaledHeight);
-			// }
-
-
-
-				var canvas = document.getElementById('myCanvas');
-	     		var context = canvas.getContext('2d');
-	      		var imageObj = new Image();
-
-	      		var x = newScaledWidth;
-	      		var y = 800;
-	      		var newX = 500;
-	      		var newY = 500;
-	      		imageObj.onload = (function(xValue,yValue,newxValue,newyValue) {
-	      			return function() {
-	        
-	        		// draw cropped image
-	        		//var sourceX = 450;
-	        		//var sourceY = 100;
-
-	        		var sourceX = newX;
-	        		var sourceY = newY;
-
-	        		var sourceWidth = 100;
-	        		var sourceHeight = 100;
-	        		//var sourceHeight = 100;
-	        		//var sourceWidth = preImgWidth*standardLength_ScaleFactor;
-	        		var destWidth = x;
-	        		var destHeight = y;
-	        		var destX = canvas.width / 2 - destWidth / 2;
-	        		var destY = canvas.height / 2 - destHeight / 2;
-
-	        		context.drawImage(imageObj, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
-	      		};
-	      	})(x,y,newX,newY);
-	      
-	      		imageObj.src = '<?php echo $current_image; ?>';
-			
-
+				html2canvas($('#clicker')[0], {
+  					scale:0.5
+				}).then(function(canvas) {
+  					$("#img-out").append(canvas);
+  					clickable.style.display = 'none';
+				});	
 				
+				document.getElementById("cropButton").innerHTML+= "<a href='crop_image.php?image=<?php echo $current_image; ?>&swidth=" + newScaledWidth + "&sheight=" + newScaledHeight + "'class='btn btn-primary btn-lg' role='button'>Crop Image &raquo;</a>";			
+			}		
 		});
-
-		</script>
-
-<script type="text/javascript">
-function buttonClicked() {
-    document.getElementById('img-out').scrollIntoView();
-    html2canvas(document.querySelector("#img-out"), {
-        logging: true,
-        allowTaint: true,
-        canvas: canvas
-    }).then(function(canvas) {
-        var dataImage = canvas.toDataURL("image/png");
-        $.ajax({
-            type: "POST",
-            url: "https://psych.shawntylerschwartz.com/fish-samples/save.php",
-            data: { 
-                data:dataImage
-            }
-        }).done(function(fileName) {
-                window.open("https://psych.shawntylerschwartz.com/fish-samples/" + fileName.replace(/['"]+/g, ''));
-
-        }); 
-    });
-}
-  </script> 
-		</main>
-	</body>
-</html>
+	</script>

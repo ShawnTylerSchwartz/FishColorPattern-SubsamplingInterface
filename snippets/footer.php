@@ -1,3 +1,11 @@
+<?php
+	//
+	// By Shawn Tyler Schwartz <shawnschwartz@ucla.edu>
+	// https://shawntylerschwartz.com
+	// (c) Alfaro Lab UCLA 2018
+	//
+?>
+
 		</main> <!-- /.container -->
 		<footer class="footer">
       		<div class="container">

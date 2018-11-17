@@ -1,6 +1,14 @@
+<?php
+	//
+	// By Shawn Tyler Schwartz <shawnschwartz@ucla.edu>
+	// https://shawntylerschwartz.com
+	// (c) Alfaro Lab UCLA 2018
+	//
+?>
+
 <!-- FishColorPattern_Interface for Subsampling Scaled Fish Images -->
-<!-- Alfaro Lab UCLA -->
-<!-- By Shawn Tyler Schwartz, 2018 <shawnschwartz@ucla.edu> -->
+<!-- (c) Alfaro Lab UCLA 2018 -->
+<!-- By Shawn Tyler Schwartz <shawnschwartz@ucla.edu> -->
 <!-- https://shawntylerschwartz.com -->
 
 <!doctype html>
@@ -22,27 +30,40 @@
 
 		<!-- Sticky Footer CSS -->
 		<link href="assets/css/footer.css" rel="stylesheet">
+
+		<!-- HTML2Canvas JS -->
+		<script src="assets/js/html2canvas.min.js"></script>
+
+		<!-- Jcrop CSS and JS -->
+		<link rel="stylesheet" href="assets/css/jquery.Jcrop.min.css" type="text/css" />
+  	<script src="assets/js/jquery.Jcrop.min.js"></script>
+
+  	<!-- Fontawesome CSS CDN -->
+  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+  	<style>
+			body {
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+
+			.clickable {
+				margin: 15px;
+				position: absolute;
+				display: flex;
+				justify-content: center;
+			}
+
+			.display {
+				display: block;
+				height: 16px;
+				position: absolute;
+				text-align: center;
+				vertical-align: middle;
+				width: 100%;
+				top: -5%;
+				margin-top: -8px;
+				font-weight: bold;
+			}
+  	</style>
 	</head>
-
-	<body>
-		<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      		<a class="navbar-brand" href="#">Fish SL Subsamples</a>
-      		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        		<span class="navbar-toggler-icon"></span>
-      		</button>
-
-      		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        		<ul class="navbar-nav mr-auto">
-          			<li class="nav-item active">
-            			<a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
-          			</li>
-    			</ul>
-      		</div>
-    	</nav>
-
-   	 	<main role="main" class="container">
-   	 		<p></p>
-   	 		<br /><br /><br />
-        	<h2>Image Subsampling Interface</h2>
-        	<p class="lead">Click on a directory below to get started.</p>
-	

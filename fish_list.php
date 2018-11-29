@@ -5,10 +5,24 @@
 	include 'snippets/main.php';
 
 	$assignedFishFiles = $_SESSION['FISHFILES'];
+
+	$userEmail = $_POST['emailaddress'];
+	$seshID = session_id();
+
+	$date   = new DateTime();
+	$readableDate = $date->format('m-d-Y,h:i:sa');
+
+	$userLookupAddress = "_userLookup.html";
+
+	$fhstream = fopen($userLookupAddress, 'a'); 
+	$userLookupAddress=$userEmail .','. $seshID . ',' . $readableDate . '<hr />'; 
+	fwrite($fhstream,$userLookupAddress); // Write information to the file
+	fclose($fhstream); // Close the file 
+
 ?>
 
 <!-- <h4>Welcome <?php echo $userEmail; ?>!</h4> -->
-<p class="lead">You have been assigned 200 fish to <strong>rescale</strong> &amp; <strong>subsample</strong>.<br />Below is the list. Please click each button to complete the process for each fish.<br />When you're finished with one fish, you will be returned to this list.<br />Green buttons represent completed fish. If a button is already green, it has been completed by someone else sometime between you starting today.</p>
+<p class="lead">You have been assigned 25 fish to <strong>rescale</strong> &amp; <strong>subsample</strong>.<br />Below is the list. Please click each button to complete the process for each fish.<br />When you're finished with one fish, you will be returned to this list.<br />Green buttons represent completed fish. If a button is already green, it has been completed by someone else sometime between you starting today.</p>
 
 <?php
                 //path to directory to scan

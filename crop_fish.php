@@ -1,4 +1,6 @@
 <?php 
+	session_start();
+
 	include 'snippets/header.php';
 	include 'snippets/main.php';
 
@@ -8,6 +10,7 @@
 
 	$original_width = $_GET['owidth'];
 	$original_height = $_GET['oheight'];
+
 ?>
 
 	<p class="lead">You are currently cropping <span class="small"><strong><em><?php echo $current_image; ?></em></strong></span>

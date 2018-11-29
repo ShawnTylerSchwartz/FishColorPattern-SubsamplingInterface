@@ -1,5 +1,7 @@
 <?php 
-	header("refresh: 0.1; url=index.php");
+	session_start();
+
+	header("refresh: 0.1; url=fish_list.php?" . SID);
 	echo '<script type="text/javascript">alert("Fish subsample has been successfully saved! Resetting interface...");</script>';
 	
 	include 'snippets/header.php';
@@ -8,6 +10,7 @@
 	$current_image = $_GET['image'];
 	$scaled_width = $_GET['swidth'];
 	$scaled_height = $_GET['sheight'];
+
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$targ_w = $targ_h = 150;

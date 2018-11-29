@@ -1,4 +1,6 @@
 <?php 
+	session_start();
+
 	include 'snippets/header.php';
 	include 'snippets/main.php';
 
@@ -177,7 +179,7 @@
   					
 				});
 				
-				document.getElementById("cropButton").innerHTML+= "<a href='crop_fish.php?image=<?php echo $current_image; ?>&swidth=" + newScaledWidth + "&sheight=" + newScaledHeight + "&owidth=" + orignalWidth + "&oheight=" + originalHeight + "'class='btn btn-primary btn-lg' role='button'>Subsample Fish Pattern <i class='far fa-arrow-alt-circle-right'></i></a>";			
+				document.getElementById("cropButton").innerHTML+= "<a href='crop_fish.php?image=<?php echo $current_image;?>&swidth=" + newScaledWidth + "&sheight=" + newScaledHeight + "&owidth=" + orignalWidth + "&oheight=" + originalHeight + "'class='btn btn-primary btn-lg' role='button'>Subsample Fish Pattern <i class='far fa-arrow-alt-circle-right'></i></a>";			
 			}		
 		});
 	</script>

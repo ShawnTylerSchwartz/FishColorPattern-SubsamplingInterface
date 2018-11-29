@@ -1,14 +1,18 @@
 <?php
+	session_start();
+
 	include 'snippets/header.php';
 	include 'snippets/main.php';
 ?>
 
-<p class="lead">Click on a directory below to get started.</p>
+<p class="lead">Please enter your email below to get started.</p>
 
+ <!-- <form class="form-signin text-center" name="login" action="fish_list.php?" method="post"> -->
+
+<!--
 <?php
 	// define function getAllDirs
-		// (return first level img directories)
-
+	// (return first level img directories)
 	function getAllDirs($directory, $directory_seperator) {
 		$dirs = array_map(function ($item) use ($directory_seperator) {
     		return $item . $directory_seperator;
@@ -136,7 +140,7 @@ foreach (ListFiles('fish_input') as $key=>$file){
 
 // Initialize the array
 
-session_start();
+
 
 $files = array();
 
@@ -173,5 +177,15 @@ echo session_id();
 echo '<a href="test.php?' . SID . '" target="_blank">test page</a>';
 
 ?>
+-->
+
+ 	<?php echo '<form class="form-signin text-center" name="login" action="fish_list.php?' . SID . '" method="post">'; ?>
+      <label for="inputEmail" class="sr-only">Username</label>
+      <input type="email" id="inputUsername" name="emailaddress" class="form-control" placeholder="Email Address" required autofocus>
+      <p></p>
+      <button class="btn btn-primary text-center" id="view-fullscreen" type="submit" name="submit" value="Submit">Launch Interface <i class="fas fa-rocket"></i></button>
+    </form>
+
+<script src="assets/js/force_fullscreen.js"></script>
 
 <?php include 'snippets/footer.php'; ?>

@@ -13,6 +13,39 @@
 		<em>Once you have made both clicks, the fish image will automatically rescale to have a <strong>SL</strong> of 1000px. Click <mark><strong>Subsample Fish Pattern <i class="far fa-arrow-alt-circle-right"></i></strong></mark> to continue.</em>-->
 	</p>
 
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#instructionsModal">
+	  <i class="fas fa-ruler"></i> Fish Rescaling Instructions
+	</button>
+
+	<!-- Subscaling Modal Instructions -->
+	<div class="modal fade" id="instructionsModal" tabindex="-1" role="dialog">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-ruler"></i> Fish Rescaling Instructions</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+			(1) Use your mouse to click on the <em>tip of the snout</em>.<br />
+			(2) Make a second click at the <em>posterior end of the midlateral portion of the hypural plate</em>.<br /><br />
+			See <a href="instructions.php" target="_blank">instructions here</a> for a schematic outlining the <strong>Standard Length (SL)</strong> measurement.<br /><br />
+			<em>Once you have made both clicks, the fish image will automatically rescale to have a <strong>SL</strong> of 1000px. Click <mark><strong>Subsample Fish Pattern <i class="far fa-arrow-alt-circle-right"></i></strong></mark> to continue.</em>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- JS Below for Modal -->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+
 	<p></p>
 	<div id="cropButton"></div>
 	<p></p>

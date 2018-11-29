@@ -21,7 +21,6 @@
                 <li class="nav-item">
                   <a class="nav-link" href="instructions.php"> Instructions </a>
     			  </ul>
-      		</div>
     </nav>
     <main class="container">
    	 		<p></p>

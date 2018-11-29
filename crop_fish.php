@@ -5,6 +5,9 @@
 	$current_image = $_GET['image'];
 	$scaled_width = $_GET['swidth'];
 	$scaled_height = $_GET['sheight'];
+
+	$original_width = $_GET['owidth'];
+	$original_height = $_GET['oheight'];
 ?>
 
 	<p class="lead">You are currently cropping <span class="small"><strong><em><?php echo $current_image; ?></em></strong></span>
@@ -15,7 +18,7 @@
 	<script>
 
 		$(function($){
-			var jcrop_api; // Holder for the API
+		var jcrop_api; // Holder for the API
 		initJcrop();
 
 		function initJcrop(){
@@ -72,7 +75,7 @@
 		  };
 
 	</script>
-	<img src="<?php echo $current_image; ?>" id="cropbox" width="<?php echo $scaled_width; ?>" height="<?php echo $scaled_height; ?>" />
+	<img src="<?php echo $current_image; ?>" id="cropbox" width="<?php echo $original_width; ?>" height="<?php echo $original_height; ?>" />
 	<br />
 	<form action="execute_crop.php?image=<?php echo $current_image; ?>&swidth=<?php echo $scaled_width; ?>&sheight=<?php echo $scaled_height; ?>" method="post" onsubmit="return checkCoords();">
 		<input type="hidden" id="x" name="x" />

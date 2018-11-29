@@ -19,7 +19,8 @@
             			<a class="nav-link" href="index.php">Reset Interface <span class="sr-only">(current)</span></a>
           			</li>
                 <li class="nav-item">
-                  <a class="nav-link" href="instructions.php"> Instructions </a>
+                  <a class="nav-link" href="instructions.php">Instructions</a>
+                </li>
     			  </ul>
     </nav>
     <main class="container">

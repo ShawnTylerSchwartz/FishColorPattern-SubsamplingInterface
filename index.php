@@ -95,4 +95,83 @@
  	}
 ?>
 
+<?php
+function ListFiles($dir) {
+    if($dh = opendir($dir)) {
+        $files = Array();
+        $inner_files = Array();
+        while($file = readdir($dh)) {
+            if($file != "." && $file != ".." && $file[0] != '.') {
+                if(is_dir($dir . "/" . $file)) {
+                    $inner_files = ListFiles($dir . "/" . $file);
+                    if(is_array($inner_files)) $files = array_merge($files, $inner_files); 
+                } else {
+                    array_push($files, $dir . "/" . $file);
+                }
+            }
+        }
+        closedir($dh);
+        shuffle($files);
+
+        return $files;
+    }
+}
+
+// $remainingFish: To be used for random session assignment to users
+$allFish = ListFiles('fish_input');
+$completedFish = $tmpstorage;
+$remainingFish = array_merge(array_diff($allFish, $completedFish), array_diff($completedFish, $allFish));
+
+$selectedFish = array_slice($remainingFish, 0, 3);
+
+
+foreach (ListFiles('fish_input') as $key=>$file){
+    echo '<pre>'; print_r($file); echo '</pre>';
+}
+
+
+?>
+
+<?php
+
+// Initialize the array
+
+session_start();
+
+$files = array();
+
+// var_dump($_SESSION['FISHFILES']);
+// Check if this is the first time visit or if there are files left to randomly select
+/*if(!isset($_SESSION['FISHFILES']) OR count($_SESSION['FISHFILES']) == 0){
+    // If its the first time visit or all files have already been selected -> reload with all files
+    $files = $selectedFish;
+    echo("first time visit / reloaded / ");
+}
+else{
+    // Use the files that are left
+    $files = $_SESSION['FISHFILES'];
+    echo("use the files that are left / ");
+}*/
+
+$files = $selectedFish;
+
+// // Get a random file
+// $selectedFile = array_rand($files);
+// var_dump($selectedFile);
+
+// //include the random file
+// print_r($files[$selectedFile]);
+// // Remove randome file from array
+// unset($files[$selectedFile]);
+
+// Set the session with the remaining files
+$_SESSION['FISHFILES'] = $files;
+
+$_SESSION['dog'] = 'green' . session_id();
+echo session_id();
+
+echo '<a href="test.php?' . SID . '" target="_blank">test page</a>';
+
+?>
+
 <?php include 'snippets/footer.php'; ?>

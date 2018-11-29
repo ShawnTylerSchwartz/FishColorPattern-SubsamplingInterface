@@ -52,6 +52,7 @@
 				position: absolute;
 				display: flex;
 				justify-content: center;
+				cursor: crosshair;
 			}
 
 			.display {

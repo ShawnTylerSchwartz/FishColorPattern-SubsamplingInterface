@@ -63,8 +63,13 @@ if(isset($_POST['username'])) {
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../index.php">Return to Interface <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="../index.php">&laquo; Return to Main Interface <span class="sr-only">(current)</span></a>
                     </li>
+                    <a href="reports.php">
+                        <button class="btn btn-secondary" type="button">
+                            <i class="fas fa-table"></i> Generate Reports 
+                        </button>
+                    </a>
                   </ul>
                   <a href="?logout=1"><button class="btn btn-danger my-2 my-sm-0">Logout</button></a>
             </div>

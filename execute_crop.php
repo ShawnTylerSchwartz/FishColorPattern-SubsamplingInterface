@@ -11,6 +11,11 @@
 	$scaled_width = $_GET['swidth'];
 	$scaled_height = $_GET['sheight'];
 
+	$seshID = session_id();
+
+	$date   = new DateTime();
+	$readableDate = $date->format('m-d-Y,h:i:sa');
+
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$targ_w = $targ_h = 150;
@@ -47,7 +52,7 @@
    			imagejpeg($final, $image_file);
 
    			$fh = fopen($txt, 'a'); 
-    		$txt=$file.','.$name . '<hr />'; 
+    		$txt=$file.','.$name . ',' . $seshID . ',' . $readableDate . '<hr />'; 
     		fwrite($fh,$txt); // Write information to the file
     		fclose($fh); // Close the file
 

@@ -6,18 +6,22 @@
 
 	$current_image = $_GET['image'];
 ?>
+	<div class="alert alert-warning" role="alert">
+			In order for proper sampling of points, <strong><em>you must be scrolled</em></strong> to the <strong>top of the page</strong>. Please ensure this before sampling, or points will be offset.
+			<br />Currently rescaling <strong><?php echo $current_image; ?></strong>
+	</div>
 
-	<p class="lead">You are currently rescaling <span class="small"><strong><em><?php echo $current_image; ?></em></strong></span>
-		<br />
-		<!--<span style="margin-left: 15px;"></span> (1) Use your mouse to click on the <em>tip of the snout</em>.<br />
-		<span style="margin-left: 15px;"></span> (2) Make a second click at the <em>posterior end of the midlateral portion of the hypural plate</em>.<br />
-		See <a href="instructions.php" target="_blank">instructions here</a> for a schematic outlining the <strong>Standard Length (SL)</strong> measurement.<br />
-		<em>Once you have made both clicks, the fish image will automatically rescale to have a <strong>SL</strong> of 1000px. Click <mark><strong>Subsample Fish Pattern <i class="far fa-arrow-alt-circle-right"></i></strong></mark> to continue.</em>-->
-	</p>
-
-	<!-- Button trigger modal -->
+	<!-- Buttons for triggering modals -->
 	<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#instructionsModal">
 	  <i class="fas fa-ruler"></i> Fish Rescaling Instructions
+	</button>
+
+	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#schematicModal">
+	  <i class="far fa-eye"></i> Example SL Schematic
+	</button>
+
+	<button type="button" class="btn btn-danger" onClick="window.location.reload()">
+	  <i class="fas fa-undo"></i> Try Again
 	</button>
 
 	<!-- Subscaling Modal Instructions -->
@@ -25,7 +29,7 @@
 	  <div class="modal-dialog modal-dialog-centered" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-ruler"></i> Fish Rescaling Instructions</h5>
+	        <h5 class="modal-title" id="instructionsModalTitle"><i class="fas fa-ruler"></i> Fish Rescaling Instructions</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
@@ -35,6 +39,26 @@
 			(2) Make a second click at the <em>posterior end of the midlateral portion of the hypural plate</em>.<br /><br />
 			See <a href="instructions.php" target="_blank">instructions here</a> for a schematic outlining the <strong>Standard Length (SL)</strong> measurement.<br /><br />
 			<em>Once you have made both clicks, the fish image will automatically rescale to have a <strong>SL</strong> of 1000px. Click <mark><strong>Subsample Fish Pattern <i class="far fa-arrow-alt-circle-right"></i></strong></mark> to continue.</em>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- SL Schematic Example Modal Instructions -->
+	<div class="modal fade" id="schematicModal" tabindex="-1" role="dialog">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="schematicModalTitle"><i class="fas fa-eye"></i> Example SL Schematic</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+			<img src="assets/img/SL-Example.png" width="100%" height="100%" />
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -149,6 +173,11 @@
 				console.log("Original Width: " + orignalWidth);
 				console.log("Original Height: " + originalHeight);
 
+				console.log(Hor_ClickOne_x);
+				console.log(Hor_ClickOne_y);
+				console.log(Hor_ClickTwo_x);
+				console.log(Hor_ClickTwo_y);
+
 				// calculate new scale factor
 				var desiredStandardLength = 1000;
 				var standardLength_ScaleFactor = desiredStandardLength / standardLength;
@@ -179,7 +208,7 @@
   					
 				});
 				
-				document.getElementById("cropButton").innerHTML+= "<a href='crop_fish.php?image=<?php echo $current_image;?>&swidth=" + newScaledWidth + "&sheight=" + newScaledHeight + "&owidth=" + orignalWidth + "&oheight=" + originalHeight + "'class='btn btn-primary btn-lg' role='button'>Subsample Fish Pattern <i class='far fa-arrow-alt-circle-right'></i></a>";			
+				document.getElementById("cropButton").innerHTML+= "<a href='crop_fish.php?image=<?php echo $current_image;?>&swidth=" + newScaledWidth + "&sheight=" + newScaledHeight + "&owidth=" + orignalWidth + "&oheight=" + originalHeight + "'class='btn btn-success btn-lg' role='button'>Subsample Fish Pattern <i class='far fa-arrow-alt-circle-right'></i></a>";			
 			}		
 		});
 	</script>

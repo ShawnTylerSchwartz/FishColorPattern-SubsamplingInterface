@@ -42,9 +42,21 @@
     		readfile($image_file);
 		}
 
+		// make filename equivalent to prior naming scheme of input file
 		$file = $_GET['image'];
-		$name = md5($file) . ".jpg";
-		$image_file = "fish_output/" . $name;
+		$nospace = explode(" ", $file);
+		$noslash = explode("/", $nospace[0]);
+		$exportPath = "fish_output/" . $noslash[1] . "/";
+		// $name = md5($file) . ".jpg";
+		$name = $noslash[2] . "-" . $nospace[1];
+
+		// make directory for family output if doesn't already exist
+		if(!is_dir($exportPath)) {
+			mkdir($exportPath);
+		}
+
+		// $image_file = "fish_output/" . $name;
+		$image_file = $exportPath . $name;
 
 		$txt = "_outputData.html";
 

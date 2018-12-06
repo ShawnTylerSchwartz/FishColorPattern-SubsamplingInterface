@@ -13,9 +13,13 @@
 
 ?>
 
-	<p class="lead">You are currently cropping <span class="small"><strong><em><?php echo $current_image; ?></em></strong></span>
-		<br />
-		<em>New Scaled Dimensions: <mark><?php echo round($scaled_width); ?> x <?php echo round($scaled_height); ?></mark></em>
+	<div class="alert alert-warning" role="alert">
+		To the best of your ability, place the square at mid body posterior to the pectoral fin while avoiding the pectoral fin.
+		<br />Currently subsampling <strong><?php echo $current_image; ?></strong>
+	</div>
+	<p>
+		<em>New Scaled Dimensions: <mark><?php echo round($scaled_width); ?> x <?php echo round($scaled_height); ?></mark></em><br />Please view <a href="instructions.php" target="_blank">instructions</a> for guidance.
+		<div style="margin-bottom: 30px"></div>
 	</p>
 
 	<script>

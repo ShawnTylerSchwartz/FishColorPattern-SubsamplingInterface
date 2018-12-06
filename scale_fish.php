@@ -17,7 +17,7 @@
 	</button>
 
 	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#schematicModal">
-	  <i class="far fa-eye"></i> Example SL Schematic
+	  <i class="far fa-eye"></i> Example SL Schematics
 	</button>
 
 	<button type="button" class="btn btn-danger" onClick="window.location.reload()">
@@ -36,9 +36,9 @@
 	      </div>
 	      <div class="modal-body">
 			(1) Use your mouse to click on the <em>tip of the snout</em>.<br />
-			(2) Make a second click at the <em>posterior end of the midlateral portion of the hypural plate</em>.<br /><br />
-			See <a href="instructions.php" target="_blank">instructions here</a> for a schematic outlining the <strong>Standard Length (SL)</strong> measurement.<br /><br />
-			<em>Once you have made both clicks, the fish image will automatically rescale to have a <strong>SL</strong> of 1000px. Click <mark><strong>Subsample Fish Pattern <i class="far fa-arrow-alt-circle-right"></i></strong></mark> to continue.</em>
+			(2) Make a second click at the <em>posterior end of the midlateral portion right before the caudal fin</em>.<br /><br />
+			<a href="instructions.php" target="_blank"><img src="assets/img/standard-length-diagram.jpg" width="100%" /></a><br /><br />
+			<em>Once you have made both clicks, the fish image will automatically rescale to have a <strong>SL</strong> of 1250px. Click <mark><strong>Subsample Fish Pattern <i class="far fa-arrow-alt-circle-right"></i></strong></mark> to continue.</em>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -52,13 +52,16 @@
 	  <div class="modal-dialog modal-dialog-centered" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="schematicModalTitle"><i class="fas fa-eye"></i> Example SL Schematic</h5>
+	        <h5 class="modal-title" id="schematicModalTitle"><i class="fas fa-eye"></i> Example SL Schematics</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 	      </div>
 	      <div class="modal-body">
-			<img src="assets/img/SL-Example.png" width="100%" height="100%" />
+			<img src="assets/img/SL-Example-1-wbox.png" width="100%" height="100%" style="padding-bottom: 10px" />
+			<img src="assets/img/SL-Example-2-wbox.png" width="100%" height="100%" style="padding-bottom: 10px" />
+			<img src="assets/img/SL-Example-3-wbox.png" width="100%" height="100%" style="padding-bottom: 10px" />
+			<img src="assets/img/SL-Example-4-wbox.png" width="100%" height="100%" style="padding-bottom: 10px" />
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

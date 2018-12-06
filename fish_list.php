@@ -22,7 +22,16 @@
 ?>
 
 <!-- <h4>Welcome <?php echo $userEmail; ?>!</h4> -->
-<p class="lead">You have been assigned 25 fish to <strong>rescale</strong> &amp; <strong>subsample</strong>.<br />Below is the list. Please click each button to complete the process for each fish.<br />When you're finished with one fish, you will be returned to this list.<br />Green buttons represent completed fish. If a button is already green, it has been completed by someone else sometime between you starting today.</p>
+<p class="lead">Here are some fish to <strong>rescale</strong> &amp; <strong>subsample:</strong>
+    <ul>
+        <li>Please click each button to complete the process for each fish.</li>
+        <li>When you're finished with one fish, you will be returned to this list.</li>
+        <li>Green buttons represent completed fish.</li>
+        <li><em>Note: If a button is already green, it has been completed by someone else sometime between you starting today.</em></li>
+    </ul>
+    If you do not finish your assigned batch, the <strong>uncompleted fish</strong> will be recycled back for someone else to complete.<br />
+    <mark>If you have <strong>completed</strong> your assigned fish, click <a href="index.php">Reset Interface</a> and <strong>re-enter</strong> your <strong>email</strong> to start a new fish session.</mark>
+</p>
 
 <?php
     //path to directory to scan
@@ -79,7 +88,7 @@
         echo "<div class='progress' style='height: 35px; margin-top: 25px;'>";
             echo "<div class='progress-bar' role='progressbar' style='font-size: 16px; font-weight: bolder; width: $percentCompleted%;'>$percentCompleted %</div>";
         echo "</div>";
-        echo "<p class='lead'><em>Current progress...percentage of fishes scaled and cropped.</em></p>";
+        echo "<p class='lead'><em>Current progress...<strong>your percentage of fishes scaled and cropped</strong> for this current session.</em></p>";
         echo "<a href='index.php'><button type='button' class='btn btn-secondary'><i class='far fa-arrow-alt-circle-left'></i> Go Back</button></a><br /><br />";
 ?>
 

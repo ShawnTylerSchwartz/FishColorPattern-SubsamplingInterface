@@ -126,7 +126,7 @@
 	$completedFish = $tmpstorage;
 	$remainingFish = array_merge(array_diff($allFish, $completedFish), array_diff($completedFish, $allFish));
 
-	$selectedFish = array_slice($remainingFish, 0, 3);
+	$selectedFish = array_slice($remainingFish, 0, 10);
 
 
 	/*foreach (ListFiles('fish_input') as $key=>$file){

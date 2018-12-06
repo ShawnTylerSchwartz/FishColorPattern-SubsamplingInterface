@@ -18,7 +18,9 @@
 
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		$targ_w = $targ_h = 150;
+		$desired_sampling_size = 175;
+
+		$targ_w = $targ_h = $desired_sampling_size;
 		$jpeg_quality = 100;
 
 		$img_r = imagecreatefromjpeg($_GET['image']);

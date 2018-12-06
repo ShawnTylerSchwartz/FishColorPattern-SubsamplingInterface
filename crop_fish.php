@@ -42,8 +42,10 @@
 
 		};
 
+		var desired_sampling_size = 175;
+
 		jcrop_api.setOptions({allowResize: false});
-		jcrop_api.setOptions({minSize: [150, 150], maxSize: [150, 150]});
+		jcrop_api.setOptions({minSize: [desired_sampling_size, desired_sampling_size], maxSize: [desired_sampling_size, desired_sampling_size]});
 		// jcrop_api.setOptions({bgColor: ''});
 		jcrop_api.focus();
 

@@ -191,7 +191,7 @@
 				console.log(Hor_ClickTwo_y);
 
 				// calculate new scale factor
-				var desiredStandardLength = 1000;
+				var desiredStandardLength = 1250;
 				var standardLength_ScaleFactor = desiredStandardLength / standardLength;
 				
 				var newScaledWidth = orignalWidth * standardLength_ScaleFactor;

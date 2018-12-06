@@ -64,7 +64,7 @@
    			imagejpeg($final, $image_file);
 
    			$fh = fopen($txt, 'a'); 
-    		$txt=$file.','.$name . ',' . $seshID . ',' . $readableDate . '<hr />'; 
+    		$txt=$file.','.$name . ',' . $seshID . ',' . $scaled_width . 'x' . $scaled_height . ',' . $readableDate . '<hr />'; 
     		fwrite($fh,$txt); // Write information to the file
     		fclose($fh); // Close the file
 

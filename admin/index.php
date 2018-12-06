@@ -70,6 +70,12 @@ if(isset($_POST['username'])) {
                             <i class="fas fa-table"></i> Generate Reports 
                         </button>
                     </a>
+                    &nbsp;
+                    <a href="../download_fish.php" target="_blank">
+                        <button class="btn btn-secondary" type="button">
+                            <i class="fas fa-file-download"></i> Download Fish Subsamples 
+                        </button>
+                    </a>
                   </ul>
                   <a href="?logout=1"><button class="btn btn-danger my-2 my-sm-0">Logout</button></a>
             </div>

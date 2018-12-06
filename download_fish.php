@@ -5,7 +5,7 @@
 	include 'snippets/main.php';
 ?>
 
-<p class="lead">Download Fish Samples by Family. <br />
+<p class="lead"><i class="fas fa-file-download"></i> Download Fish Samples by Family. <br />
 	<strong>Click a family</strong> to download the scaled samples.</p>
 
 <?php
@@ -40,7 +40,7 @@
  		$numImgs = count($images);
  		echo "<a href='generate_fish_zip.php?dir=" . $dir . "'target='_blank'>";
  			echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
- 				echo $dir; 
+ 				echo "<i class='fas fa-file-archive'></i>" . $dir; 
  				echo "<span class='badge badge-primary badge-pill'>";
  					echo $numImgs;
  				echo "</span>";

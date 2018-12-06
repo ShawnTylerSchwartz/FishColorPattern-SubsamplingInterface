@@ -92,6 +92,12 @@
 
 		var clickCounter = 0;
 
+		var scrollOffsetHeight_One = 0;
+		var correctedDotHeight_One = 0;
+		var scrollOffsetHeight_Two = 0;
+		var correctedDotHeight_Two = 0;
+
+
 		clickable = document.getElementById('clicker');
 		clickable.style.backgroundSize = 'contain';
 		clickable.style.backgroundRepeat = 'no-repeat';
@@ -111,13 +117,16 @@
 
 				$display.text('Horizontal SL Click 1: ' + 'x: ' + Hor_ClickOne_x + ', y: ' + Hor_ClickOne_y);
 
+				scrollOffsetHeight_One = window.scrollY;
+				correctedDotHeight_One = (scrollOffsetHeight_One + Hor_ClickOne_y);
+
 				var color = '#f47742';
         		var size = '15px';
         		var radius = '15px';
         		$(".clickable").append(
             		$('<div></div>')
                 	.css('position', 'absolute')
-                	.css('top', Hor_ClickOne_y + 'px')
+                	.css('top', correctedDotHeight_One + 'px')
                 	.css('left', Hor_ClickOne_x + 'px')
                 	.css('width', size)
                 	.css('height', size)
@@ -135,13 +144,16 @@
 
 				$display.text('Horizontal SL Click 2: ' + 'x: ' + Hor_ClickTwo_x + ', y: ' + Hor_ClickTwo_y);
 
+				scrollOffsetHeight_Two = window.scrollY;
+				correctedDotHeight_Two = (scrollOffsetHeight_One + Hor_ClickTwo_y);
+
 				var color = '#f47742';
         		var size = '15px';
         		var radius = '15px';
 				$(".clickable").append(
             		$('<div></div>')
                 	.css('position', 'absolute')
-                	.css('top', Hor_ClickTwo_y + 'px')
+                	.css('top', correctedDotHeight_Two + 'px')
                 	.css('left', Hor_ClickTwo_x + 'px')
                 	.css('width', size)
                 	.css('height', size)
@@ -153,7 +165,7 @@
 				var clickHeight = $('#clicker').height();
 
 				$(".clickable").append(
-					$('<svg width="'+clickWidth+'" height="'+clickHeight+'"><line x1="'+Hor_ClickOne_x+'" y1="'+Hor_ClickOne_y+'" x2="'+Hor_ClickTwo_x+'" y2="'+Hor_ClickTwo_y+'" stroke="#f47742" stroke-width="6" stroke-dasharray="5,5" /></svg>')
+					$('<svg width="'+clickWidth+'" height="'+clickHeight+'"><line x1="'+Hor_ClickOne_x+'" y1="'+correctedDotHeight_One+'" x2="'+Hor_ClickTwo_x+'" y2="'+correctedDotHeight_Two+'" stroke="#f47742" stroke-width="6" stroke-dasharray="5,5" /></svg>')
 					.css('position','absolute')
         		);
 			} else {

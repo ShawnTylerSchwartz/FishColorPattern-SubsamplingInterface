@@ -7,6 +7,8 @@ include 'userinfo.php';
 //     header('Location: index.php');
 // }
 
+$_SESSION['verifiedUser'] = false;
+
 if(isset($_GET['logout'])) {
     $_SESSION['username'] = '';
     // header('Location: ' . $_SERVER['PHP_SELF']);
@@ -17,6 +19,7 @@ if(isset($_GET['logout'])) {
 if(isset($_POST['username'])) {
     if($userinfo[$_POST['username']] == $_POST['password']) {
         $_SESSION['username'] = $_POST['username'];
+        $_SESSION['verifiedUser'] = true;
         header('Location: index.php');
     } else {
         //Invalid Login

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if($_SESSION['username'] === '') {
+if(($_SESSION['username'] === '') || (($_SESSION['verifiedUser'] === false) && ($_SESSION['verifiedUser'] !== ''))) {
     header('Location: login.php');
 }
 
@@ -18,7 +18,6 @@ if(isset($_POST['username'])) {
         echo "<script>alert('The username and password you have entered are incorrect. Try again!')</script>";
     }
 }
-
 ?>
 <!doctype html>
 <html lang="en">
